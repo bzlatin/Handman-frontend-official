@@ -8,6 +8,14 @@ function App() {
   const [wrongGuess, setWrongGuess] = useState("");
   const [userWins, setUserWins] = useState("");
 
+  useEffect(() => {
+    const socket = io("http://localhost:8080");
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
   const guessLetter = () => {
     fetch(`http://localhost:8080/usersGuess/${usersGuess}`)
       .then((res) => {
