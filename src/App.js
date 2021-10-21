@@ -9,7 +9,9 @@ function App() {
   const [userWins, setUserWins] = useState("");
 
   useEffect(() => {
-    const socket = io("http://localhost:8080");
+    const socket = io("http://localhost:8080", {
+      transports: ["websocket"],
+    });
 
     return () => {
       socket.disconnect();
