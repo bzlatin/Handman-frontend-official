@@ -13,6 +13,10 @@ function App() {
       transports: ["websocket"],
     });
 
+    socket.on("new-guess", (data) => {
+      usersData();
+    });
+
     return () => {
       socket.disconnect();
     };
@@ -21,8 +25,19 @@ function App() {
   const guessLetter = () => {
     fetch(`http://localhost:8080/usersGuess/${usersGuess}`)
       .then((res) => {
+        res.json().then((text) => {
+          console.log(text);
+        });
+      })
+      .catch((err) => {
+        console.log("error!", err);
+      });
+  };
+
+  const usersData = () => {
+    fetch(`http://localhost:8080/usersData`)
+      .then((res) => {
         res.json().then((json) => {
-          console.log(json);
           setShownWord(json.displayedWord);
           if (json.correctGuess === false) {
             setWrongGuess(alert("You guessed an incorrect letter. Try again."));
@@ -38,7 +53,6 @@ function App() {
         console.log("error!", err);
       });
   };
-
   // Reset Input Field handler
   const resetInputField = () => {
     setUsersGuess("");
@@ -65,6 +79,7 @@ function App() {
         type="submit"
         onClick={() => {
           guessLetter();
+          usersData();
           resetInputField();
         }}
       >
