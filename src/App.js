@@ -23,6 +23,7 @@ function App() {
   }, []);
 
   const guessLetter = () => {
+    //ADD A PROMISE
     fetch(`http://localhost:8080/usersGuess/${usersGuess}`)
       .then((res) => {
         res.json().then((text) => {
