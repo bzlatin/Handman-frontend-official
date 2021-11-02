@@ -54,6 +54,19 @@ function App() {
         console.log("error!", err);
       });
   };
+
+  const newGame = () => {
+    fetch(`http://localhost:8080/usersData/newGame`)
+      .then((res) => {
+        res.json().then((text) => {
+          console.log(text);
+        });
+      })
+      .catch((err) => {
+        console.log("error!", err);
+      });
+  };
+
   // Reset Input Field handler
   const resetInputField = () => {
     setUsersGuess("");
@@ -86,6 +99,14 @@ function App() {
           }}
         >
           <span>Enter</span>
+        </button>
+        <button
+          onClick={() => {
+            newGame();
+            usersData();
+          }}
+        >
+          Restart
         </button>
       </header>
     </div>
