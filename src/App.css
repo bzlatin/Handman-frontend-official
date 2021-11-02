@@ -41,6 +41,14 @@
   border-radius: 10px;
   border-color: #282c34;
 }
+.restart-button {
+  margin-top: 1.2rem;
+  height: 33px;
+  width: 300px;
+  border-radius: 10px;
+  border-color: #282c34;
+  background-color: rgb(173, 118, 42);
+}
 
 .shown-word {
   position: relative;

@@ -41,11 +41,13 @@ function App() {
         res.json().then((json) => {
           setShownWord(json.displayedWord);
           if (json.correctGuess === false) {
-            setWrongGuess(alert("You guessed an incorrect letter. Try again."));
+            setWrongGuess(
+              console.log("You guessed an incorrect letter. Try again.")
+            );
           }
           if (json.displayedWord === json.generatedWord) {
             setTimeout(function () {
-              setUserWins(alert("Congrats 🥳 , You win!"));
+              setUserWins(console.log("Congrats 🥳 , You win!"));
             }, 50);
           }
         });
@@ -101,12 +103,13 @@ function App() {
           <span>Enter</span>
         </button>
         <button
+          className="restart-button"
           onClick={() => {
             newGame();
             usersData();
           }}
         >
-          Restart
+          Restart Game
         </button>
       </header>
     </div>
