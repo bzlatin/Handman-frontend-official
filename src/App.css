@@ -28,6 +28,25 @@
   color: #61dafb;
 }
 
+.label {
+  font-size: 60px;
+  padding-bottom: 1rem;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.enter-button {
+  margin-top: 1.2rem;
+  height: 33px;
+  width: 300px;
+  border-radius: 10px;
+  border-color: #282c34;
+}
+
+.shown-word {
+  position: relative;
+  bottom: 170px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

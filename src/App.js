@@ -60,32 +60,34 @@ function App() {
   };
 
   return (
-    <div>
-      <div>{userWins}</div>
-      <div>{wrongGuess}</div>
-      <div>{shownWord}</div>
-      <label>Guess a letter!</label>
-      <input
-        name="usersGuess"
-        minLength="1"
-        type="text"
-        value={usersGuess}
-        onChange={(e) => {
-          setUsersGuess(e.target.value);
-        }}
-      />
-      <button
-        className="btn"
-        disabled={true && !usersGuess}
-        type="submit"
-        onClick={() => {
-          guessLetter();
-          usersData();
-          resetInputField();
-        }}
-      >
-        <span>Enter</span>
-      </button>
+    <div className="App">
+      <header className="App-header">
+        <div>{userWins}</div>
+        <div>{wrongGuess}</div>
+        <div className="shown-word">{shownWord}</div>
+        <label className="label">Guess a letter!</label>
+        <input
+          name="usersGuess"
+          minLength="1"
+          type="text"
+          value={usersGuess}
+          onChange={(e) => {
+            setUsersGuess(e.target.value);
+          }}
+        />
+        <button
+          className="enter-button"
+          disabled={true && !usersGuess}
+          type="submit"
+          onClick={() => {
+            guessLetter();
+            usersData();
+            resetInputField();
+          }}
+        >
+          <span>Enter</span>
+        </button>
+      </header>
     </div>
   );
 }
