@@ -7,8 +7,11 @@ function App() {
   const [shownWord, setShownWord] = useState("");
   const [wrongGuess, setWrongGuess] = useState("");
   const [userWins, setUserWins] = useState("");
+  const [shownNumOfLives, setShownNumOfLives] = useState("");
 
   useEffect(() => {
+    usersData();
+
     const socket = io("http://localhost:8080", {
       transports: ["websocket"],
     });
@@ -23,7 +26,7 @@ function App() {
   }, []);
 
   const guessLetter = () => {
-    //ADD A PROMISE
+    //ADD A PROMISE??
     fetch(`http://localhost:8080/usersGuess/${usersGuess}`)
       .then((res) => {
         res.json().then((text) => {
@@ -50,6 +53,7 @@ function App() {
               setUserWins(console.log("Congrats 🥳 , You win!"));
             }, 50);
           }
+          setShownNumOfLives(json.numberOfLives);
         });
       })
       .catch((err) => {
@@ -68,6 +72,7 @@ function App() {
         console.log("error!", err);
       });
   };
+  console.log(shownNumOfLives);
 
   // Reset Input Field handler
   const resetInputField = () => {
@@ -92,7 +97,7 @@ function App() {
         />
         <button
           className="enter-button"
-          disabled={true && !usersGuess}
+          disabled={(true && !usersGuess) || shownNumOfLives === 0}
           type="submit"
           onClick={() => {
             guessLetter();
@@ -111,6 +116,7 @@ function App() {
         >
           Restart Game
         </button>
+        <h2> Lives left: {shownNumOfLives}</h2>
       </header>
     </div>
   );
