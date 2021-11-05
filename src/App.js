@@ -87,6 +87,7 @@ function App() {
         <div className="shown-word">{shownWord}</div>
         <label className="label">Guess a letter!</label>
         <input
+          className="input"
           name="usersGuess"
           minLength="1"
           type="text"
@@ -116,7 +117,7 @@ function App() {
         >
           Restart Game
         </button>
-        <h2> Lives left: {shownNumOfLives}</h2>
+        <h2 className="lives-left"> Lives left: {shownNumOfLives}</h2>
       </header>
     </div>
   );
