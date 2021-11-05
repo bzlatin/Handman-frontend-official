@@ -90,6 +90,7 @@ function App() {
           className="input"
           name="usersGuess"
           minLength="1"
+          maxLength="1"
           type="text"
           value={usersGuess}
           onChange={(e) => {
