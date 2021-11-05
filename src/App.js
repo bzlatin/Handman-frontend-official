@@ -53,6 +53,11 @@ function App() {
               setUserWins(console.log("Congrats 🥳 , You win!"));
             }, 50);
           }
+          if (json.guessCount % 2 === 0) {
+            // Make user 1 only be able to guess
+          } else {
+            // Make user 2 only be able to guess
+          }
           setShownNumOfLives(json.numberOfLives);
         });
       })
